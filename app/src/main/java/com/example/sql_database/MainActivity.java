@@ -32,10 +32,17 @@ public class MainActivity extends AppCompatActivity {
     }
     //запись в бд по кнопке save
     public void onClickSave(View view) {
+        tvTest.setText("");
         myDbManager.insertToDb(edTitle.getText().toString(), edDisc.getText().toString());
         for(String title : myDbManager.getFromDb()){
             tvTest.append(title);
             tvTest.append("\n");
         }
+    }
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        myDbManager.closeDb();
     }
 }
