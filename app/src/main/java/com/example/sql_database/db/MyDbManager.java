@@ -2,8 +2,10 @@ package com.example.sql_database.db;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,6 +35,19 @@ public class MyDbManager {
     }
     //метод возвращает данные из таблици
     public List<String> getFromDb(){
-
+        List<String> tempList = new ArrayList<>();
+        //специальный класс для выборки данных из колонок таблицы
+        Cursor cursor = db.query(MyConstants.TABLE_NAME, null, null, null,null,null,null);
+        //пробежать по колонне
+        while(cursor.moveToNext()){
+            String title = cursor.getString(cursor.getColumnIndex(MyConstants.TITLE)); //по колонке индекс
+            tempList.add(title); //записать в наш список
+        }
+        cursor.close();
+        return tempList;
+    }
+    //закрыть базу данных
+    public void closeDb(){
+        myDBHelper.close();
     }
 }
