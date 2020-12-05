@@ -12,6 +12,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.sql_database.adapter.ListItem;
+import com.example.sql_database.db.MyConstants;
 import com.example.sql_database.db.MyDbManager;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -24,12 +26,14 @@ public class EditActivity extends AppCompatActivity {
     private MyDbManager myDbManager;
     private final int PICK_IMAGE_CODE = 123;
     private String tempUrl = "empty";
+    private boolean isEditState = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
         init();
+        getMyIntents();
     }
 
     @Override
@@ -55,6 +59,22 @@ public class EditActivity extends AppCompatActivity {
         fbAddImage = findViewById(R.id.fbAddImage);
         imageContainer = findViewById(R.id.imageContainer);
         myDbManager = new MyDbManager(this);
+    }
+
+    private void getMyIntents(){
+
+        Intent i = getIntent();
+        if(i != null){
+
+            ListItem item = (ListItem) i.getSerializableExtra(MyConstants.LIST_ITEM_INTENT);
+            isEditState = i.getBooleanExtra(MyConstants.EDIT_STATE, true);
+
+            if (!isEditState){
+                edTitle.setText(item.getTitle());
+                edDesc.setText(item.getDesc());
+            }
+
+        }
     }
 
     public void onClickSave(View view){

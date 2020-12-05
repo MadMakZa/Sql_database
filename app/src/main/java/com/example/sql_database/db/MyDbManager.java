@@ -45,11 +45,13 @@ public class MyDbManager {
         while(cursor.moveToNext()){
             ListItem item = new ListItem();
             String title = cursor.getString(cursor.getColumnIndex(MyConstants.TITLE)); //по колонке индекс
-            String desc = cursor.getString(cursor.getColumnIndex(MyConstants.DISC)); //по колонке индекс
+            String disc = cursor.getString(cursor.getColumnIndex(MyConstants.DISC)); //по колонке индекс
             String url = cursor.getString(cursor.getColumnIndex(MyConstants.URL)); //по колонке индекс
+
             item.setTitle(title);
-            item.setTitle(desc);
+            item.setTitle(disc);
             item.setTitle(url);
+
             tempList.add(item); //записать в наш список
         }
         cursor.close();

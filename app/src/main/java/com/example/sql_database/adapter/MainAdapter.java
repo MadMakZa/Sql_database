@@ -1,6 +1,7 @@
 package com.example.sql_database.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +11,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.sql_database.EditActivity;
+import com.example.sql_database.MainActivity;
 import com.example.sql_database.R;
+import com.example.sql_database.db.MyConstants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +38,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> 
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         //создаем вью и передаем новый лайоут для разметки
         View view = LayoutInflater.from(context).inflate(R.layout.item_list_layout, parent, false);
-        return new MyViewHolder(view);
+        return new MyViewHolder(view, context, mainArray);
     }
     //заполняет элементами
     @Override
@@ -50,9 +54,13 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> 
     //вложенный класс для нахождения элемента который будет отрисован
     class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView tvTitle;
+        private Context context;
+        private List<ListItem> mainArray;
 
-        public MyViewHolder(@NonNull View itemView) {
+        public MyViewHolder(@NonNull View itemView, Context context, List<ListItem> mainArray) {
             super(itemView);
+            this.context = context;
+            this.mainArray = mainArray;
             tvTitle = itemView.findViewById(R.id.tvTitle);
             itemView.setOnClickListener(this);
         }
@@ -63,7 +71,11 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> 
         //слушатель нажатий каждого добавленного элемента в ресайклер вью
         @Override
         public void onClick(View v) {
-            Log.d("Mylog", "Pressed : " + getAdapterPosition());
+            //запуск активити
+            Intent i = new Intent(context, EditActivity.class);
+            i.putExtra(MyConstants.LIST_ITEM_INTENT,mainArray.get(getAdapterPosition()));
+            i.putExtra(MyConstants.EDIT_STATE, false); //если фолс то для просмотра
+            context.startActivity(i);
         }
     }
     public void updateAdapter(List<ListItem> newList){

@@ -5,6 +5,8 @@ package com.example.sql_database.db;
  */
 
 public class MyConstants {
+    public static final String LIST_ITEM_INTENT = "list_item_intent";
+    public static final String EDIT_STATE = "edit_state";
     public static final String TABLE_NAME = "my_table";
     //колонки
     public static final String _ID = "_id";

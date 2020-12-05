@@ -1,6 +1,8 @@
 package com.example.sql_database.adapter;
 
-public class ListItem {
+import java.io.Serializable;
+
+public class ListItem implements Serializable {
     private String title;
     private String desc;
     private String url;
