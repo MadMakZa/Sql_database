@@ -13,7 +13,6 @@ import com.example.sql_database.db.MyDbManager;
 public class MainActivity extends AppCompatActivity {
     private MyDbManager myDbManager;
     private EditText edTitle, edDisc;
-    private TextView tvTest;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
         myDbManager = new MyDbManager(this);
         edTitle = findViewById(R.id.edTitle);
         edDisc = findViewById(R.id.edDisc);
-        tvTest = findViewById(R.id.tvTest);
     }
 
     @Override
@@ -32,12 +30,7 @@ public class MainActivity extends AppCompatActivity {
     }
     //запись в бд по кнопке save
     public void onClickSave(View view) {
-        tvTest.setText("");
         myDbManager.insertToDb(edTitle.getText().toString(), edDisc.getText().toString());
-        for(String title : myDbManager.getFromDb()){
-            tvTest.append(title);
-            tvTest.append("\n");
-        }
     }
 
     @Override
