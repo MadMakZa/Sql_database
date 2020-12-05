@@ -25,10 +25,11 @@ public class MyDbManager {
     public void openDb(){
         db = myDBHelper.getWritableDatabase();
     }
-    public void insertToDb(String title, String disc){
+    public void insertToDb(String title, String disc, String url){
         //Sqlite напрямую не принимает данные, надо использовать специальную hashmap
         ContentValues cv = new ContentValues();
         cv.put(MyConstants.TITLE, title);
+        cv.put(MyConstants.URL, url);
         cv.put(MyConstants.DISC, disc);
         //загружаем данные hashmap в нашу дб
         db.insert(MyConstants.TABLE_NAME, null, cv);

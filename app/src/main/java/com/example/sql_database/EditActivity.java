@@ -23,6 +23,7 @@ public class EditActivity extends AppCompatActivity {
     private EditText edTitle, edDesc;
     private MyDbManager myDbManager;
     private final int PICK_IMAGE_CODE = 123;
+    private String tempUrl = "empty";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,7 @@ public class EditActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(resultCode == RESULT_OK && requestCode == PICK_IMAGE_CODE && data != null){
+            tempUrl = data.getData().toString();
             imNewImage.setImageURI(data.getData());
         }
     }
@@ -63,7 +65,7 @@ public class EditActivity extends AppCompatActivity {
                 || desc.equals("")){
             Toast.makeText(this, R.string.text_empty, Toast.LENGTH_SHORT).show();
         } else {
-            myDbManager.insertToDb(title, desc);
+            myDbManager.insertToDb(title, tempUrl, desc);
             Toast.makeText(this, R.string.text_saved, Toast.LENGTH_SHORT).show();
             finish();
             myDbManager.closeDb();
