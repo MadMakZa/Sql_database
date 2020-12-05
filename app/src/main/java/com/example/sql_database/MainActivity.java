@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        init();
+
 
     }
 
@@ -39,11 +41,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
+    //открытие базы данных
     @Override
     protected void onResume() {
         super.onResume();
         myDbManager.openDb();
+        //считать с бьазы данных
+        mainAdapter.updateAdapter(myDbManager.getFromDb());
     }
     //запись в бд по кнопке save
     public void onClickSave(View view) {
