@@ -7,9 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.example.sql_database.adapter.MainAdapter;
 import com.example.sql_database.db.MyDbManager;
@@ -33,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private void init(){
         myDbManager = new MyDbManager(this);
         edTitle = findViewById(R.id.edTitle);
-        edDisc = findViewById(R.id.edDisc);
+        edDisc = findViewById(R.id.edDesc);
         rcView = findViewById(R.id.rcView);
         mainAdapter = new MainAdapter(this);
         //расположение элементов по вертикали
