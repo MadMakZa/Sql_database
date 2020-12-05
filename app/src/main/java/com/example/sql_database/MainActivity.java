@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -50,9 +51,11 @@ public class MainActivity extends AppCompatActivity {
         mainAdapter.updateAdapter(myDbManager.getFromDb());
     }
     //запись в бд по кнопке save
-    public void onClickSave(View view) {
-        myDbManager.insertToDb("Text", "Test");
-        mainAdapter.updateAdapter(myDbManager.getFromDb());
+    public void onClickAdd(View view) {
+        //запуск активити с редактором
+        Intent intent = new Intent(MainActivity.this, EditActivity.class);
+        startActivity(intent);
+
     }
 
     @Override
