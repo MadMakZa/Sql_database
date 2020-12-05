@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.sql_database.adapter.ListItem;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,14 +37,20 @@ public class MyDbManager {
         db.insert(MyConstants.TABLE_NAME, null, cv);
     }
     //метод возвращает данные из таблици
-    public List<String> getFromDb(){
-        List<String> tempList = new ArrayList<>();
+    public List<ListItem> getFromDb(){
+        List<ListItem> tempList = new ArrayList<>();
         //специальный класс для выборки данных из колонок таблицы
         Cursor cursor = db.query(MyConstants.TABLE_NAME, null, null, null,null,null,null);
         //пробежать по колонне
         while(cursor.moveToNext()){
+            ListItem item = new ListItem();
             String title = cursor.getString(cursor.getColumnIndex(MyConstants.TITLE)); //по колонке индекс
-            tempList.add(title); //записать в наш список
+            String desc = cursor.getString(cursor.getColumnIndex(MyConstants.DISC)); //по колонке индекс
+            String url = cursor.getString(cursor.getColumnIndex(MyConstants.URL)); //по колонке индекс
+            item.setTitle(title);
+            item.setTitle(desc);
+            item.setTitle(url);
+            tempList.add(item); //записать в наш список
         }
         cursor.close();
         return tempList;

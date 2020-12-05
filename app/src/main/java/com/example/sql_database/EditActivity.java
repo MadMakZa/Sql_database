@@ -72,6 +72,10 @@ public class EditActivity extends AppCompatActivity {
         }
     }
     public void onClickDeleteImage(View view){
+        //картинка по умолчанию
+        imNewImage.setImageResource(R.drawable.image_def);
+        tempUrl = "empty";
+
         imageContainer.setVisibility(View.GONE);
         fbAddImage.setVisibility(View.VISIBLE);
     }
