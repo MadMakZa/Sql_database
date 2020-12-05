@@ -38,7 +38,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> 
     //заполняет элементами
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-
+        holder.setData(mainArray.get(position));
     }
     //отвечает за количество запусков методов которые выше
     @Override
@@ -46,7 +46,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> 
         return mainArray.size();
     }
 
-    //вложенный класс для нахождения элемента который будет рисоваться
+    //вложенный класс для нахождения элемента который будет отрисован
     class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView tvTitle;
 
