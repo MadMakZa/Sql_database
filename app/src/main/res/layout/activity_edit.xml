@@ -81,7 +81,7 @@
         android:background="@android:drawable/editbox_background"
         android:ems="10"
         android:hint="Description"
-        android:inputType="textPersonName"
+        android:inputType="textMultiLine|textPersonName"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/edTitle"
