@@ -42,6 +42,8 @@ public class EditActivity extends AppCompatActivity {
         } else {
             myDbManager.insertToDb(title, desc);
             Toast.makeText(this, R.string.text_saved, Toast.LENGTH_SHORT).show();
+            finish();
+            myDbManager.closeDb();
         }
     }
 }
