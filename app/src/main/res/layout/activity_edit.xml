@@ -38,6 +38,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
+            android:onClick="onClickChooseImage"
             app:layout_constraintEnd_toEndOf="@+id/imNewImage"
             app:layout_constraintTop_toTopOf="@+id/imNewImage"
             app:srcCompat="@android:drawable/ic_menu_edit" />
