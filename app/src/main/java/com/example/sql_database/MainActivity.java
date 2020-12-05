@@ -51,7 +51,8 @@ public class MainActivity extends AppCompatActivity {
     }
     //запись в бд по кнопке save
     public void onClickSave(View view) {
-        myDbManager.insertToDb(edTitle.getText().toString(), edDisc.getText().toString());
+        myDbManager.insertToDb("Text", "Test");
+        mainAdapter.updateAdapter(myDbManager.getFromDb());
     }
 
     @Override
