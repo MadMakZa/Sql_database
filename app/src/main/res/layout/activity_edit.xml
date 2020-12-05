@@ -49,6 +49,7 @@
             android:layout_marginEnd="4dp"
             android:layout_marginRight="4dp"
             android:layout_marginBottom="8dp"
+            android:onClick="onClickDeleteImage"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/imNewImage"
             app:srcCompat="@android:drawable/ic_menu_delete" />
@@ -104,12 +105,13 @@
         app:srcCompat="@drawable/ic_save" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/dbAddImage"
+        android:id="@+id/fbAddImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:alpha="0.6"
         android:clickable="true"
+        android:onClick="onClickAddImage"
         app:layout_constraintBottom_toTopOf="@+id/floatingActionButton"
         app:layout_constraintEnd_toEndOf="@+id/floatingActionButton"
         app:srcCompat="@drawable/ic_add_image" />
